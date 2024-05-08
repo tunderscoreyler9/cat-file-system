@@ -1,0 +1,11 @@
+{
+  "name": "cat-file-sys-app",
+  "version": "1.0.0",
+  "description": "Program using Node, npm, and the file API to mimic the standard UNIX utility 'cat'.",
+  "main": "step1.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "tyler-skidmore",
+  "license": "ISC"
+}
