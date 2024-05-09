@@ -9,7 +9,13 @@ function cat(path) {
         console.log(`File contents: ${data}`);
     });
 };
-cat('one.txt');
+// cat('one.txt');
+
+if(process.argv.length !== 3) {
+    console.error('Usage: please provided a <file> to read!')
+    process.exit(1);
+};
 
 
-
+const filename = process.argv[2];
+cat(filename);
