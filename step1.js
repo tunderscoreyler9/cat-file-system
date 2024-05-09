@@ -10,4 +10,3 @@ function cat(path) {
     });
 };
 cat('one.txt');
-cat('one.txt');
