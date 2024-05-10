@@ -1,5 +1,6 @@
 const fs = require('fs');
 const axios = require('axios');
+const process = require('process');
 
 function cat(path) {
     fs.access(path, fs.constants.F_OK, (err) => {
@@ -24,8 +25,6 @@ if(process.argv.length !== 3) {
     process.exit(1);
 };
 
-const filename = process.argv[2];
-cat(filename);
 
 
 // Webcat:
@@ -38,4 +37,12 @@ async function webCat(url) {
         console.error(error.message);
         process.exit(1);
     };
+};
+
+// Code to determine whether to cat or to webCat:
+let path = process.argv[2];
+if(path.slice(0, 4) === 'http') {
+    webCat(path);
+} else {
+    cat(path);
 };
