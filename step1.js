@@ -1,7 +1,15 @@
 const fs = require('fs');
 
 function cat(path) {
-    fs.readFile(path, 'utf8', function(err, data) {
+    fs.access(path, fs.constants.F_OK, (err) => {
+        if(err) {
+            console.error(`Error reading ${path}`);
+            console.error(err);
+            process.exit(1);
+        }
+    });
+
+    fs.readFile(path, 'utf8', (err, data) => {
         if(err) {
             console.error(err);
             process.exit(1);
@@ -12,10 +20,9 @@ function cat(path) {
 // cat('one.txt');
 
 if(process.argv.length !== 3) {
-    console.error('Usage: please provided a <file> to read!')
+    console.error('Error: please provided a <file> to read!')
     process.exit(1);
 };
-
 
 const filename = process.argv[2];
 cat(filename);
